@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://wyfuotl8hce6"]
+
+[ext_resource type="Texture2D" uid="uid://crxtekwks2kx0" path="res://Sprites/Crates/crate_13.png" id="1_hno30"]
+
+[node name="Cargo" type="TextureRect"]
+offset_right = 64.0
+offset_bottom = 64.0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_hno30")

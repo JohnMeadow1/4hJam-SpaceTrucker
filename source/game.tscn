@@ -1,13 +1,15 @@
 [gd_scene load_steps=3 format=3 uid="uid://bqsbc30lactt5"]
 
-[ext_resource type="PackedScene" uid="uid://devqo231h8h2k" path="res://nodes/asteroid.tscn" id="1_e2o6t"]
-[ext_resource type="PackedScene" uid="uid://bc333b8xb3r47" path="res://nodes/spaceship.tscn" id="2_feb5d"]
+[ext_resource type="PackedScene" uid="uid://bc333b8xb3r47" path="res://Nodes/spaceship.tscn" id="2_e2o6t"]
+[ext_resource type="PackedScene" uid="uid://b5f7v74v3hc00" path="res://Nodes/planet.tscn" id="2_fc0e3"]
 
 [node name="World" type="Node2D"]
 metadata/_edit_lock_ = true
 
-[node name="Asteroid" parent="." instance=ExtResource("1_e2o6t")]
-position = Vector2(540, 437)
+[node name="Planets" type="Node2D" parent="."]
 
-[node name="Spaceship" parent="." instance=ExtResource("2_feb5d")]
-position = Vector2(283, 327)
+[node name="Spaceship" parent="." instance=ExtResource("2_e2o6t")]
+position = Vector2(247, 398)
+
+[node name="Planet" parent="." instance=ExtResource("2_fc0e3")]
+position = Vector2(775, 387)

@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://cewqmtrj3mops"]
+
+[ext_resource type="Script" path="res://VisualEffects/EngineTrails/VFXEngineTrail.gd" id="1_61oi0"]
+[ext_resource type="Material" uid="uid://d4bx0ju6y1tas" path="res://VisualEffects/EngineTrails/VFXEngineExhaust.material" id="1_n5tul"]
+
+[sub_resource type="Curve" id="Curve_qj4sw"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.997986, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_hu2y7"]
+offsets = PackedFloat32Array(0.198529, 0.653614, 0.827206, 0.897059, 0.944853)
+colors = PackedColorArray(0, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_ftatv"]
+offsets = PackedFloat32Array(0, 0.2, 0.8, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mqqix"]
+gradient = SubResource("Gradient_ftatv")
+fill_to = Vector2(0, 1)
+
+[node name="VFXEngineTrail" type="Line2D"]
+show_behind_parent = true
+top_level = true
+material = ExtResource("1_n5tul")
+width = 6.0
+width_curve = SubResource("Curve_qj4sw")
+gradient = SubResource("Gradient_hu2y7")
+texture = SubResource("GradientTexture2D_mqqix")
+texture_mode = 2
+round_precision = 1
+script = ExtResource("1_61oi0")
+max_points = 5

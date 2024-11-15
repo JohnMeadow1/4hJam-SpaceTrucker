@@ -1,28 +1,43 @@
-[gd_scene load_steps=5 format=3 uid="uid://bc333b8xb3r47"]
+[gd_scene load_steps=6 format=3 uid="uid://bc333b8xb3r47"]
 
 [ext_resource type="Script" path="res://Nodes/spaceship.gd" id="1_7njk3"]
-[ext_resource type="Texture2D" uid="uid://c33rrdb523fwq" path="res://Sprites/Other/fighter.png" id="1_f3lal"]
+[ext_resource type="Texture2D" uid="uid://cypk085yq1hdu" path="res://Sprites/SpaceShooter/Ships/spaceShips_001.png" id="2_167t0"]
+[ext_resource type="Texture2D" uid="uid://cy1f0rr4p0qaf" path="res://Sprites/SpaceShooter/Parts/spaceParts_001.png" id="2_dsnqg"]
 [ext_resource type="PackedScene" uid="uid://c04srhrfdwvmu" path="res://Nodes/background.tscn" id="3_sjfj3"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_167t0"]
 
 [node name="Spaceship" type="RigidBody2D"]
+collision_layer = 3
 physics_material_override = SubResource("PhysicsMaterial_167t0")
+gravity_scale = 0.0
 can_sleep = false
+lock_rotation = true
 script = ExtResource("1_7njk3")
 
-[node name="Visual" type="Node2D" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="Visual"]
-texture_filter = 1
-scale = Vector2(2, 2)
-texture = ExtResource("1_f3lal")
-
-[node name="Label" type="Label" parent="."]
-offset_top = -86.0
-offset_right = 40.0
-offset_bottom = -63.0
-
 [node name="Camera2D" type="Camera2D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="Background" parent="Camera2D" instance=ExtResource("3_sjfj3")]
+metadata/_edit_lock_ = true
+
+[node name="Visual" type="Node2D" parent="."]
+scale = Vector2(0.5, 0.5)
+
+[node name="Wing" type="Sprite2D" parent="Visual"]
+position = Vector2(-11.5, -53)
+texture = ExtResource("2_dsnqg")
+
+[node name="Wing2" type="Sprite2D" parent="Visual"]
+position = Vector2(-11.5, 53)
+texture = ExtResource("2_dsnqg")
+flip_v = true
+
+[node name="Body" type="Sprite2D" parent="Visual"]
+texture_filter = 1
+rotation = -1.57079
+texture = ExtResource("2_167t0")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(20, 15, 9, 26, -15, 20, -18, 7, -18, -7, -15, -20, 8, -26, 20, -15)
+metadata/_edit_lock_ = true

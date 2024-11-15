@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://dj4kuuy2jcb0y"]
+
+[ext_resource type="Material" uid="uid://d4bx0ju6y1tas" path="res://VisualEffects/EngineTrails/VFXEngineExhaust.material" id="1_ouxu2"]
+[ext_resource type="Texture2D" uid="uid://cfrvraog5ass0" path="res://Sprites/Misc/2x2.png" id="2_q5d2j"]
+[ext_resource type="Script" path="res://VisualEffects/EngineTrails/VFXEngineExhaust_.gd" id="3_cl831"]
+
+[node name="VFXEngineExhaust" type="Sprite2D"]
+material = ExtResource("1_ouxu2")
+scale = Vector2(50, 25)
+texture = ExtResource("2_q5d2j")
+offset = Vector2(-1, 0)
+script = ExtResource("3_cl831")

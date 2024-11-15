@@ -1,0 +1,50 @@
+[gd_scene load_steps=2 format=3 uid="uid://4qyclvfsu4a8"]
+
+[ext_resource type="Texture2D" uid="uid://bar3akaeka18y" path="res://Assets/Sprites/circle_100_inner_highlight.png" id="1_ugy2d"]
+
+[node name="LightTester" type="Node2D"]
+
+[node name="White" type="PointLight2D" parent="."]
+range_layer_min = -100
+range_layer_max = 100
+texture = ExtResource("1_ugy2d")
+texture_scale = 5.0
+height = 10.0
+metadata/_edit_lock_ = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+position = Vector2(25, 0)
+color = Color(1, 0, 0, 1)
+range_layer_min = -100
+range_layer_max = -90
+texture = ExtResource("1_ugy2d")
+texture_scale = 5.0
+height = 1.0
+metadata/_edit_lock_ = true
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+visible = false
+position = Vector2(-12.5, 21.651)
+color = Color(0, 1, 0, 1)
+range_layer_min = -100
+range_layer_max = -90
+texture = ExtResource("1_ugy2d")
+texture_scale = 5.0
+height = 1.0
+metadata/_edit_lock_ = true
+
+[node name="PointLight2D3" type="PointLight2D" parent="."]
+visible = false
+position = Vector2(-12.5, -21.65)
+color = Color(0, 0, 1, 1)
+range_layer_min = -100
+range_layer_max = -90
+texture = ExtResource("1_ugy2d")
+texture_scale = 5.0
+height = 1.0
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_ugy2d")
