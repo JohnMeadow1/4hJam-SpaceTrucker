@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bc333b8xb3r47"]
+
+[ext_resource type="Script" path="res://Nodes/spaceship.gd" id="1_7njk3"]
+[ext_resource type="Texture2D" uid="uid://c33rrdb523fwq" path="res://Sprites/Other/fighter.png" id="1_f3lal"]
+[ext_resource type="PackedScene" uid="uid://c04srhrfdwvmu" path="res://Nodes/background.tscn" id="3_sjfj3"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_167t0"]
+
+[node name="Spaceship" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_167t0")
+can_sleep = false
+script = ExtResource("1_7njk3")
+
+[node name="Visual" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual"]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("1_f3lal")
+
+[node name="Label" type="Label" parent="."]
+offset_top = -86.0
+offset_right = 40.0
+offset_bottom = -63.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Background" parent="Camera2D" instance=ExtResource("3_sjfj3")]
