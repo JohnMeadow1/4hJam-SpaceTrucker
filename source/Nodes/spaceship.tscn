@@ -1,11 +1,42 @@
-[gd_scene load_steps=6 format=3 uid="uid://bc333b8xb3r47"]
+[gd_scene load_steps=14 format=3 uid="uid://bc333b8xb3r47"]
 
-[ext_resource type="Script" path="res://Nodes/spaceship.gd" id="1_7njk3"]
+[ext_resource type="Script" uid="uid://bemutt1t1y60w" path="res://Nodes/spaceship.gd" id="1_7njk3"]
 [ext_resource type="Texture2D" uid="uid://cypk085yq1hdu" path="res://Sprites/SpaceShooter/Ships/spaceShips_001.png" id="2_167t0"]
 [ext_resource type="Texture2D" uid="uid://cy1f0rr4p0qaf" path="res://Sprites/SpaceShooter/Parts/spaceParts_001.png" id="2_dsnqg"]
 [ext_resource type="PackedScene" uid="uid://c04srhrfdwvmu" path="res://Nodes/background.tscn" id="3_sjfj3"]
+[ext_resource type="PackedScene" uid="uid://cewqmtrj3mops" path="res://VisualEffects/EngineTrails/VFXEngineTrail.tscn" id="5_n1x3g"]
+[ext_resource type="Shader" uid="uid://cgtxdtemfbmrr" path="res://VisualEffects/EngineTrails/VFXEngineExhaust.gdshader" id="6_kt7ky"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_167t0"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_g7gql"]
+noise_type = 0
+seed = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0sjw4"]
+seamless = true
+noise = SubResource("FastNoiseLite_g7gql")
+
+[sub_resource type="Gradient" id="Gradient_n1trl"]
+offsets = PackedFloat32Array(0, 0.523868, 0.845777, 1)
+colors = PackedColorArray(1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_akkok"]
+gradient = SubResource("Gradient_n1trl")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n1x3g"]
+resource_local_to_scene = true
+shader = ExtResource("6_kt7ky")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_0sjw4")
+shader_parameter/tint_gradient = SubResource("GradientTexture1D_akkok")
+shader_parameter/speed = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kt7ky"]
+resource_local_to_scene = true
+shader = ExtResource("6_kt7ky")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_0sjw4")
+shader_parameter/tint_gradient = SubResource("GradientTexture1D_akkok")
+shader_parameter/speed = 1.0
 
 [node name="Spaceship" type="RigidBody2D"]
 collision_layer = 3
@@ -21,22 +52,45 @@ metadata/_edit_lock_ = true
 [node name="Background" parent="Camera2D" instance=ExtResource("3_sjfj3")]
 metadata/_edit_lock_ = true
 
+[node name="VFXEngineTrail1" parent="." instance=ExtResource("5_n1x3g")]
+z_index = -2
+material = SubResource("ShaderMaterial_n1x3g")
+position = Vector2(0, -1)
+width = 30.0
+max_points = 10
+
+[node name="VFXEngineTrail2" parent="." instance=ExtResource("5_n1x3g")]
+z_index = -2
+material = SubResource("ShaderMaterial_kt7ky")
+width = 30.0
+max_points = 10
+
 [node name="Visual" type="Node2D" parent="."]
 scale = Vector2(0.5, 0.5)
 
-[node name="Wing" type="Sprite2D" parent="Visual"]
-position = Vector2(-11.5, -53)
+[node name="Wing1" type="Sprite2D" parent="Visual"]
+position = Vector2(18, -50)
+rotation = -0.479966
 texture = ExtResource("2_dsnqg")
+offset = Vector2(-18, -35)
 
 [node name="Wing2" type="Sprite2D" parent="Visual"]
-position = Vector2(-11.5, 53)
+position = Vector2(18, 50)
+rotation = 0.479966
 texture = ExtResource("2_dsnqg")
+offset = Vector2(-18, 35)
 flip_v = true
 
 [node name="Body" type="Sprite2D" parent="Visual"]
 texture_filter = 1
 rotation = -1.57079
 texture = ExtResource("2_167t0")
+
+[node name="Marker2D1" type="Marker2D" parent="Visual"]
+position = Vector2(-40, -14)
+
+[node name="Marker2D2" type="Marker2D" parent="Visual"]
+position = Vector2(-40, 14)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(20, 15, 9, 26, -15, 20, -18, 7, -18, -7, -15, -20, 8, -26, 20, -15)

@@ -9,7 +9,7 @@ metadata/_edit_lock_ = true
 [node name="Planets" type="Node2D" parent="."]
 
 [node name="Spaceship" parent="." instance=ExtResource("2_e2o6t")]
-position = Vector2(247, 398)
+position = Vector2(216, 120)
 
 [node name="Planet" parent="." instance=ExtResource("2_fc0e3")]
 position = Vector2(775, 387)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5f7v74v3hc00"]
+[gd_scene load_steps=6 format=3 uid="uid://b5f7v74v3hc00"]
 
-[ext_resource type="Script" path="res://Nodes/planet.gd" id="2_hlpc4"]
+[ext_resource type="Script" uid="uid://s72x4gxphrth" path="res://Nodes/planet.gd" id="2_hlpc4"]
 [ext_resource type="Texture2D" uid="uid://cq5hpcbwv45x3" path="res://Sprites/Planets/planet00.png" id="3_0vwba"]
+[ext_resource type="Texture2D" uid="uid://dquppdvqc43qn" path="res://Sprites/Misc/100x100_circle_smooth.png" id="3_jgvqd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jgvqd"]
 radius = 103.019
@@ -12,6 +13,11 @@ radius = 147.014
 [node name="Planet" type="StaticBody2D"]
 collision_mask = 0
 script = ExtResource("2_hlpc4")
+
+[node name="Highlight" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+scale = Vector2(3, 3)
+texture = ExtResource("3_jgvqd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_jgvqd")
