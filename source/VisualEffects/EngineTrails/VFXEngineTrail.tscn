@@ -7,7 +7,7 @@
 show_behind_parent = true
 top_level = true
 material = ExtResource("1_n5tul")
-width = 6.0
+width = 30.0
 texture_mode = 2
 joint_mode = 2
 script = ExtResource("1_61oi0")

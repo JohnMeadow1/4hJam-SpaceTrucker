@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bemutt1t1y60w" path="res://Nodes/spaceship.gd" id="1_7njk3"]
 [ext_resource type="Texture2D" uid="uid://cypk085yq1hdu" path="res://Sprites/SpaceShooter/Ships/spaceShips_001.png" id="2_167t0"]
 [ext_resource type="Texture2D" uid="uid://cy1f0rr4p0qaf" path="res://Sprites/SpaceShooter/Parts/spaceParts_001.png" id="2_dsnqg"]
-[ext_resource type="PackedScene" uid="uid://c04srhrfdwvmu" path="res://Nodes/background.tscn" id="3_sjfj3"]
+[ext_resource type="PackedScene" uid="uid://tid1huqj6vyq" path="res://Nodes/camera_2d.tscn" id="2_n1x3g"]
 [ext_resource type="PackedScene" uid="uid://cewqmtrj3mops" path="res://VisualEffects/EngineTrails/VFXEngineTrail.tscn" id="5_n1x3g"]
 [ext_resource type="Shader" uid="uid://cgtxdtemfbmrr" path="res://VisualEffects/EngineTrails/VFXEngineExhaust.gdshader" id="6_kt7ky"]
 
@@ -46,11 +46,7 @@ can_sleep = false
 lock_rotation = true
 script = ExtResource("1_7njk3")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-metadata/_edit_lock_ = true
-
-[node name="Background" parent="Camera2D" instance=ExtResource("3_sjfj3")]
-metadata/_edit_lock_ = true
+[node name="Camera2D" parent="." instance=ExtResource("2_n1x3g")]
 
 [node name="VFXEngineTrail1" parent="." instance=ExtResource("5_n1x3g")]
 z_index = -2

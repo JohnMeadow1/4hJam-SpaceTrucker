@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://tid1huqj6vyq"]
+
+[ext_resource type="Script" uid="uid://2l1mehq2vv03" path="res://Nodes/camera_2d.gd" id="1_5dlvu"]
+[ext_resource type="PackedScene" uid="uid://c04srhrfdwvmu" path="res://Nodes/background.tscn" id="1_xi21g"]
+
+[sub_resource type="Curve" id="Curve_n1x3g"]
+_data = [Vector2(0, 0), 100000.0, 2.0, 1, 0, Vector2(0.4, 0.85), 0.0, 0.0, 0, 0, Vector2(0.6, 0.85), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.0, 100000.0, 0, 1]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_wyg7n"]
+curve = SubResource("Curve_n1x3g")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kt7ky"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(1920, 1080, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(-1, 0, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+scale_min = 1.5
+scale_max = 1.5
+color = Color(1, 1, 1, 0.85)
+alpha_curve = SubResource("CurveTexture_wyg7n")
+
+[node name="Camera2D" type="Camera2D"]
+script = ExtResource("1_5dlvu")
+metadata/_edit_lock_ = true
+
+[node name="Background" parent="." instance=ExtResource("1_xi21g")]
+metadata/_edit_lock_ = true
+
+[node name="DustParticles" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+amount = 256
+lifetime = 7.0
+preprocess = 15.0
+visibility_rect = Rect2(-5000, -5000, 10000, 10000)
+process_material = SubResource("ParticleProcessMaterial_kt7ky")

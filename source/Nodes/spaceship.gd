@@ -32,8 +32,14 @@ var planet: Planet
 func _ready() -> void:
 	vfx_engine_trail_1.setup(marker_2d_1.global_position, marker_2d_1.global_position + facing * 15)
 	vfx_engine_trail_2.setup(marker_2d_2.global_position, marker_2d_2.global_position + facing * 15)
-	pass
-
+	vfx_engine_trail_2.material = vfx_engine_trail_2.material.duplicate()
+	var new_noise :NoiseTexture2D= vfx_engine_trail_2.material.get_shader_parameter("noise_texture")
+	new_noise = new_noise.duplicate()
+	new_noise.noise = new_noise.noise.duplicate()
+	new_noise.noise.seed = 2
+	
+	vfx_engine_trail_2.material.set_shader_parameter("noise_texture", new_noise)
+	
 func _physics_process(delta):
 	process_input()
 
